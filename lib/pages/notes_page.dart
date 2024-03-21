@@ -11,6 +11,11 @@ class _NotesPageState extends State<NotesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFFE57373),
+        title: Text("apakek"),
+
+      ),
 
     );
   }
