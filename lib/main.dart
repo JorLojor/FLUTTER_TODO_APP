@@ -8,14 +8,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await NoteDatabase.initialize();
 
-
   runApp(
     ChangeNotifierProvider(
-        create: (context) => NoteDatabase(),
-        child: const MyApp(),
-
-    )
-
+      create: (context) => NoteDatabase(),
+      child: const MyApp(),
+    ),
   );
 }
 
