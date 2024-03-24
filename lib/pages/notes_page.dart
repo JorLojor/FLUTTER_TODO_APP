@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todooaap/models/note_database.dart';
@@ -91,40 +92,89 @@ class _NotesPageState extends State<NotesPage> {
     List<Note> currentNote = noteDataBase.currentNotes;
 
     return Scaffold(
+
+
+
       appBar: AppBar(
-        backgroundColor: const Color(0xFFE57373),
-        title: const Text("apakek"),
+        // backgroundColor: const Color(0xFFE57373).,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+
       ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       floatingActionButton: FloatingActionButton(
         onPressed: createNote,
         child: const Icon(Icons.add),
       ),
-      body: ListView.builder(
-        itemCount: currentNote.length,
-        itemBuilder: (context, index) {
-          // get individual note
-          final note = currentNote[index];
 
-          // list tile UI
-          return ListTile(
-            title: Text(note.text),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // edit button
-                IconButton(
-                  onPressed: () => updateNote(note),
-                  icon: Icon(Icons.edit),
-                ),
-                // delete button
-                IconButton(
-                  onPressed: () => deleteNote(note.id),
-                  icon: Icon(Icons.delete),
-                ),
-              ],
+
+
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //HEADER
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Text("NOTES"),
+          ),
+
+
+
+
+
+
+
+
+          //LIST OF NOTES
+          Expanded(
+            child: ListView.builder(
+              itemCount: currentNote.length,
+              itemBuilder: (context, index) {
+                // get individual note
+                final note = currentNote[index];
+            
+                // list tile UI
+                return ListTile(
+                  title: Text(note.text),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // edit button
+                      IconButton(
+                        onPressed: () => updateNote(note),
+                        icon: Icon(Icons.edit),
+                      ),
+                      // delete button
+                      IconButton(
+                        onPressed: () => deleteNote(note.id),
+                        icon: Icon(Icons.delete),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
